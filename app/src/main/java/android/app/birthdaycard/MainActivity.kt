@@ -12,6 +12,10 @@ class MainActivity : AppCompatActivity() {
 
     private var age: Int = 0;
     private var name: String = "Sam"
+    private val images = arrayOf(
+        R.drawable.cake,
+        R.drawable.cake_2
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +30,7 @@ class MainActivity : AppCompatActivity() {
                 imageView.visibility = View.GONE
                 btn.text = "Open"
             } else {
+                imageView.setImageResource(images[randomPic()]);
                 btn.text = "Close"
                 age = randomAge()
                 name = randomName()
@@ -45,5 +50,7 @@ class MainActivity : AppCompatActivity() {
         return upperNames[Random.nextInt(0, 5)]
     }
 
-
+    private fun randomPic(): Int{
+        return Random.nextInt(images.size);
+    }
 }
