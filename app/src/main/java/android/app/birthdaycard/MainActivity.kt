@@ -11,6 +11,7 @@ import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
 
     private var age: Int = 0;
+    private var name: String = "Sam"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,14 +28,21 @@ class MainActivity : AppCompatActivity() {
             } else {
                 btn.text = "Close"
                 age = randomAge()
-                text.text = "Happy Birthday, Sam $age !";
+                name = randomName()
+                text.text = "Happy Birthday, $name $age !";
                 imageView.visibility = View.VISIBLE
             }
         }
     }
 
-    fun randomAge(): Int {
+    private fun randomAge(): Int {
         return Random.nextInt(1, 100);
+    }
+
+    private fun randomName(): String {
+        val listName: List<String> = listOf("John", "Jane", "Oggy", "Boby", "Mike");
+        val upperNames = listName.map { it.uppercase() }
+        return upperNames[Random.nextInt(0, 5)]
     }
 
 
